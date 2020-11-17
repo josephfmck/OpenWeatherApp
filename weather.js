@@ -7,13 +7,13 @@ class Weather {
 
     //  Fetch weather from API
     async getWeather() {
-        const response = await fetch(`api.openweathermap.org/data/2.5/weather?q=${this.city},${this.state}&appid=${this.apiKey}`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.city},${this.state}&appid=${this.apiKey}&units=imperial`);
 
-        const responseData = response.json();
+        const responseData = await response.json(); //resolve promise with await
 
-        console.log(responseData);
+        console.log(responseData); 
 
-        return responseData;
+        return responseData; //returns promise cuz async
     }
 
     //  Change weather location
